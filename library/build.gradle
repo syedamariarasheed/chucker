@@ -104,7 +104,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.syedamariarasheed'
-                artifactId = 'chucker-library'
+                artifactId = 'library'
                 version = '5.0.0'
             }
         }

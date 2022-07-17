@@ -45,14 +45,14 @@ dependencies {
 //apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 apply from: rootProject.file('gradle/kotlin-static-analysis.gradle')
 
-project.afterEvaluate {
+afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
 
                 groupId = 'com.github.syedamariarasheed'
-                artifactId = 'chucker-library-no-op'
+                artifactId = 'library-no-op'
                 version = '5.0.0'
             }
         }
