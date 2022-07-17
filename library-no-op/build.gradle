@@ -52,8 +52,8 @@ project.afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.syedamariarasheed'
-                artifactId = 'chucker'
-                version = '0.0.1'
+                artifactId = 'chucker:library-no-op'
+                version = '5.0.0'
             }
         }
     }
