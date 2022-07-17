@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -41,7 +42,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+//apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 apply from: rootProject.file('gradle/kotlin-static-analysis.gradle')
 
 project.afterEvaluate {
@@ -52,7 +53,7 @@ project.afterEvaluate {
 
                 groupId = 'com.github.syedamariarasheed'
                 artifactId = 'chucker'
-                version = '1.0.0'
+                version = '0.0.1'
             }
         }
     }

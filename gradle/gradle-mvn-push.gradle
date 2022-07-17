@@ -1,17 +1,17 @@
-apply plugin: 'maven-publish'
-apply plugin: 'signing'
-
-group = GROUP
-version = VERSION_NAME
-
-
-def signingKey = findProperty("SIGNING_KEY")
-def signingPwd = findProperty("SIGNING_PWD")
-if (signingKey && signingPwd) {
-    signing {
-        useInMemoryPgpKeys(signingKey, signingPwd)
-        sign publishing.publications.release
-    }
-} else {
-    logger.info("Signing Disable as the PGP key was not found")
-}
+//apply plugin: 'maven-publish'
+//apply plugin: 'signing'
+//
+//group = GROUP
+//version = VERSION_NAME
+//
+//
+//def signingKey = findProperty("SIGNING_KEY")
+//def signingPwd = findProperty("SIGNING_PWD")
+//if (signingKey && signingPwd) {
+//    signing {
+//        useInMemoryPgpKeys(signingKey, signingPwd)
+//        sign publishing.publications.release
+//    }
+//} else {
+//    logger.info("Signing Disable as the PGP key was not found")
+//}
