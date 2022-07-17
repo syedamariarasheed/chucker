@@ -6,7 +6,6 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.chuckerteam.chucker.api.Chucker
-import com.chuckerteam.chucker.internal.ui.logs.ChuckerDebug
 import com.chuckerteam.chucker.sample.databinding.ActivityMainSampleBinding
 
 private val interceptorTypeSelector = InterceptorTypeSelector()
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                 for (task in httpTasks) {
                     task.run()
                 }
-                ChuckerDebug.debug("mytag","message")
             }
 
             launchChuckerDirectly.visibility = if (Chucker.isOp) View.VISIBLE else View.GONE
