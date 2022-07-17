@@ -46,9 +46,7 @@ apply from: rootProject.file('gradle/kotlin-static-analysis.gradle')
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
-                from components.release
-
+            bar(MavenPublication) {
                 groupId = 'com.github.syedamariarasheed'
                 artifactId = 'library-no-op'
                 version = '5.0.0'
