@@ -49,7 +49,7 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.syedamariarasheed'
+                groupId = 'com.github.syedamariarasheed.chucker'
                 artifactId = 'library-no-op'
                 version = '5.0.0'
             }
