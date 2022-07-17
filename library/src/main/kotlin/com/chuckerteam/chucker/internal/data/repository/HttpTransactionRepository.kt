@@ -3,6 +3,7 @@ package com.chuckerteam.chucker.internal.data.repository
 import androidx.lifecycle.LiveData
 import com.chuckerteam.chucker.internal.data.entity.HttpTransaction
 import com.chuckerteam.chucker.internal.data.entity.HttpTransactionTuple
+import com.chuckerteam.chucker.internal.data.entity.ChuckerLogs
 
 /**
  * Repository Interface representing all the operations that are needed to let Chucker work
@@ -26,4 +27,10 @@ internal interface HttpTransactionRepository {
     fun getTransaction(transactionId: Long): LiveData<HttpTransaction?>
 
     suspend fun getAllTransactions(): List<HttpTransaction>
+
+    suspend fun insertChuckLogs(chuckerLogs: ChuckerLogs)
+
+    suspend fun updateChuckLogs(chuckerLogs: ChuckerLogs) : Int
+
+    suspend fun getAllLogs(): List<ChuckerLogs>
 }

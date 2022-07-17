@@ -6,12 +6,12 @@
         android:icon="@drawable/chucker_ic_search_white"
         android:title="@string/chucker_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/export"
         android:icon="@drawable/chucker_ic_share_white"
         android:title="@string/chucker_export"
-        app:showAsAction="ifRoom">
+        app:showAsAction="always">
         <menu>
             <group>
                 <item
@@ -23,6 +23,11 @@
             </group>
         </menu>
     </item>
+    <item
+        android:id="@+id/logs"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/chucker_logs"
+        app:showAsAction="always" />
     <item
         android:id="@+id/clear"
         android:icon="@drawable/chucker_ic_delete_white"

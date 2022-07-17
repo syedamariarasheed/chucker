@@ -3,6 +3,7 @@ package com.chuckerteam.chucker.internal.data.repository
 import androidx.lifecycle.LiveData
 import com.chuckerteam.chucker.internal.data.entity.HttpTransaction
 import com.chuckerteam.chucker.internal.data.entity.HttpTransactionTuple
+import com.chuckerteam.chucker.internal.data.entity.ChuckerLogs
 import com.chuckerteam.chucker.internal.data.room.ChuckerDatabase
 import com.chuckerteam.chucker.internal.support.distinctUntilChanged
 
@@ -42,4 +43,15 @@ internal class HttpTransactionDatabaseRepository(private val database: ChuckerDa
     }
 
     override suspend fun getAllTransactions(): List<HttpTransaction> = transactionDao.getAll()
+
+    override suspend fun insertChuckLogs(chuckerLogs: ChuckerLogs) {
+        val id = transactionDao.insertLogs(chuckerLogs)
+        chuckerLogs.id = id ?: 0
+    }
+
+    override suspend fun updateChuckLogs(chuckerLogs: ChuckerLogs): Int {
+        return transactionDao.updateLogs(chuckerLogs)
+    }
+
+    override suspend fun getAllLogs(): List<ChuckerLogs> = transactionDao.getAllLogs()
 }

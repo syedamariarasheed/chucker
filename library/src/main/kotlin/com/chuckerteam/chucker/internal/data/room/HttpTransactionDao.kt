@@ -8,6 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.chuckerteam.chucker.internal.data.entity.HttpTransaction
 import com.chuckerteam.chucker.internal.data.entity.HttpTransactionTuple
+import com.chuckerteam.chucker.internal.data.entity.ChuckerLogs
 
 @Dao
 internal interface HttpTransactionDao {
@@ -44,4 +45,13 @@ internal interface HttpTransactionDao {
 
     @Query("SELECT * FROM transactions")
     suspend fun getAll(): List<HttpTransaction>
+
+    @Insert
+    suspend fun insertLogs(chuckerLogs: ChuckerLogs): Long?
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateLogs(chuckerLogs: ChuckerLogs): Int
+
+    @Query("SELECT * FROM chucklogs")
+    suspend fun getAllLogs(): List<ChuckerLogs>
 }

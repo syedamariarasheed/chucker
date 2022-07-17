@@ -1,10 +1,10 @@
 package com.chuckerteam.chucker.internal.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.SearchView
@@ -21,6 +21,8 @@ import com.chuckerteam.chucker.internal.support.TransactionDetailsHarSharable
 import com.chuckerteam.chucker.internal.support.TransactionListDetailsSharable
 import com.chuckerteam.chucker.internal.support.shareAsFile
 import com.chuckerteam.chucker.internal.support.showDialog
+import com.chuckerteam.chucker.internal.ui.logs.ChuckerDebug
+import com.chuckerteam.chucker.internal.ui.logs.LogsActivity
 import com.chuckerteam.chucker.internal.ui.transaction.TransactionActivity
 import com.chuckerteam.chucker.internal.ui.transaction.TransactionAdapter
 import kotlinx.coroutines.launch
@@ -122,6 +124,10 @@ internal class MainActivity :
                 )
                 true
             }
+            R.id.logs -> {
+                startActivity(Intent(this, LogsActivity::class.java))
+                true
+            }
             else -> {
                 super.onOptionsItemSelected(item)
             }
@@ -138,6 +144,7 @@ internal class MainActivity :
     private fun exportTransactions(fileName: String, block: suspend (List<HttpTransaction>) -> Sharable) {
         val applicationContext = this.applicationContext
         lifecycleScope.launch {
+            val logs = viewModel.getAllLogs()
             val transactions = viewModel.getAllTransactions()
             if (transactions.isNullOrEmpty()) {
                 showToast(applicationContext.getString(R.string.chucker_export_empty_text))

@@ -50,6 +50,17 @@ public class ChuckerCollector @JvmOverloads constructor(
         }
     }
 
+//    @JvmStatic
+//    public fun onLogsRequestSent(logs: Logs) {
+//        scope.launch {
+//            RepositoryProvider.transaction().insertChuckLogs(logs)
+//
+//            withContext(Dispatchers.IO) {
+//                retentionManager.doMaintenance()
+//            }
+//        }
+//    }
+
     /**
      * Call this method when you received the response of an HTTP request.
      * It must be called after [ChuckerCollector.onRequestSent].

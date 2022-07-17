@@ -25,6 +25,7 @@
     <string name="chucker_no">No</string>
     <string name="chucker_share">Share</string>
     <string name="chucker_export">Export</string>
+    <string name="chucker_logs">Logs</string>
     <string name="chucker_export_empty_text">Nothing to export</string>
     <string name="chucker_export_no_file">Failed to create file for export</string>
     <string name="chucker_share_as_text">Share as text</string>
@@ -58,4 +59,13 @@
     <string name="chucker_request_is_empty">This request is empty</string>
     <string name="chucker_response_is_empty">This response is empty</string>
     <string name="chucker_shortcut_label">Open Chucker</string>
+    <string name="title_activity_logs">LogsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

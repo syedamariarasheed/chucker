@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.chuckerteam.chucker.api.Chucker
+import com.chuckerteam.chucker.internal.ui.logs.ChuckerDebug
 import com.chuckerteam.chucker.sample.databinding.ActivityMainSampleBinding
 
 private val interceptorTypeSelector = InterceptorTypeSelector()
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ChuckerDebug.debug("mytag","message",this)
         mainBinding = ActivityMainSampleBinding.inflate(layoutInflater)
 
         with(mainBinding) {
