@@ -9,7 +9,7 @@
 <!--    </parent>-->
     <groupId>com.github.syedamariarasheed.chucker</groupId>
     <artifactId>library</artifactId>
-    <version>5.0.0</version>
+    <version>6.0.0</version>
     <name>library</name>
     <url>http://maven.apache.org</url>
     <properties>
