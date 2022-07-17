@@ -58,12 +58,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter {
-            content {
-                includeModule("org.jetbrains.trove4j", "trove4j")
-                includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
-            }
-        }
+        maven { url 'https://jitpack.io' }
     }
 
     tasks.withType(Test) {
