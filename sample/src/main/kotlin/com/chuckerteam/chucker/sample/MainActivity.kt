@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ChuckerDebug.debug("mytag","message",this)
         mainBinding = ActivityMainSampleBinding.inflate(layoutInflater)
 
         with(mainBinding) {
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 for (task in httpTasks) {
                     task.run()
                 }
+                ChuckerDebug.debug("mytag","message")
             }
 
             launchChuckerDirectly.visibility = if (Chucker.isOp) View.VISIBLE else View.GONE
