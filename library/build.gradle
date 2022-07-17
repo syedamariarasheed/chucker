@@ -104,7 +104,7 @@ project.afterEvaluate {
 
                 groupId = 'com.github.syedamariarasheed'
                 artifactId = 'chucker'
-                version = '4.0.0'
+                version = '1.0.0'
             }
         }
     }
