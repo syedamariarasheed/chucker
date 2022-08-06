@@ -55,9 +55,7 @@ platform :android do
         f = File.new(path, 'w')
         f.write(s)
         f.close
-        majorVersionCode+"."+minorVersionCode+"."+patchVersionCode+"-"+preReleaseVersionCode
-
-        gradle(task: "clean")
+        majorVersionCode+"."+minorVersionCode+"."+patchVersionCode
 
     end
 
@@ -82,18 +80,20 @@ platform :android do
 
           versionCode = get_build_version
 
+          gradle(task: "clean")
+
           task = gradle(task: "library:publish")
 
           git_add(path: "*")
           git_commit(
-                path: "*", message: "release library version "+versionCode+"",
+                path: "*", message: "release library version "+versionCode,
                 skip_git_hooks: true
           )
 
           push_to_git_remote
 
           add_git_tag(
-            tag: "library-"+versionCode
+            tag: versionCode
           )
 
           push_git_tags
