@@ -86,14 +86,14 @@ platform :android do
 
           git_add(path: "*")
           git_commit(
-                path: "*", message: "release library version "+versionCode,
+                path: "*", message: "release library version "+versionCode+"",
                 skip_git_hooks: true
           )
 
           push_to_git_remote
 
           add_git_tag(
-            tag: "my_custom_tag"
+            tag: "library-"+versionCode
           )
 
           push_git_tags
