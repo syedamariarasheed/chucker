@@ -1,0 +1,23 @@
+ext {
+    majorVersion = 4
+    minorVersion = 0
+    patchVersion = 0
+    preRelease = "4"
+
+
+    generateVersionCode = {
+        Integer versionCode = ext.majorVersion * 100000 + ext.minorVersion * 1000 + ext.patchVersion * 100
+        if (ext.preRelease != null && !ext.preRelease.isEmpty()) {
+            versionCode = versionCode + ext.preRelease.toInteger()
+        }
+        versionCode
+    }
+
+    generateVersionName = {
+        String versionName = "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
+        if (ext.preRelease != null && !ext.preRelease.isEmpty()) {
+            versionName = versionName + "-" + ext.preRelease
+        }
+        versionName
+    }
+}

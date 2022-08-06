@@ -84,11 +84,19 @@ platform :android do
 
           task = gradle(task: "library:publish")
 
+          git_add(path: "*")
+          git_commit(
+                path: "*", message: "release library version "+versionCode,
+                skip_git_hooks: true
+          )
+
+          push_to_git_remote
+
           add_git_tag(
-              prefix: "library",
-              postfix: "postfix",
-              build_number: versionCode
-           )
+            tag: "my_custom_tag"
+          )
+
+          push_git_tags
 
         end
 
