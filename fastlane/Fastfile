@@ -1,0 +1,95 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+#before_all do
+#  ensure_git_branch
+#  ensure_git_status_clean
+#  git_pull
+#end
+
+platform :android do
+
+  desc "get build version"
+
+    private_lane :get_build_version do
+
+        path = '../library/versioning.gradle'
+
+        majorVersion = /majorVersion = (\d)/
+
+        minorVersion = /minorVersion = (\d)/
+
+        patchVersion = /patchVersion = (\d)/
+
+        preReleaseVersion = /preRelease = "([A-Za-z0-9])"/
+
+        s = File.read(path)
+
+        version = prompt(text: "enter version: ")
+
+        versionRegex = /(\d).(\d).(\d)/
+
+        s[majorVersion] = "majorVersion = " + version[versionRegex,1].to_s
+        s[minorVersion] = "minorVersion = " + version[versionRegex,2].to_s
+        s[patchVersion] = "patchVersion = " + version[versionRegex,3].to_s
+
+        majorVersionCode = s[majorVersion, 1].to_s
+        minorVersionCode = s[minorVersion, 1].to_s
+        patchVersionCode = s[patchVersion, 1].to_s
+        preReleaseVersionCode = s[preReleaseVersion, 1].to_s
+
+        f = File.new(path, 'w')
+        f.write(s)
+        f.close
+        majorVersionCode+"."+minorVersionCode+"."+patchVersionCode+"-"+preReleaseVersionCode
+
+        gradle(task: "clean")
+
+    end
+
+
+  desc "Get release notes from file"
+
+  private_lane :get_release_notes do
+
+      path = '../release_notes'
+
+      notes = File.read(path)
+
+      notes
+
+  end
+
+      desc "Submit a new prod Debug Build to firebase distribution"
+
+        lane :publishchucker do
+
+          gradle(task: "project assemble",build_type: "Release")
+
+          versionCode = get_build_version
+
+          task = gradle(task: "library:publish")
+
+          add_git_tag(
+              prefix: "library",
+              postfix: "postfix",
+              build_number: versionCode
+           )
+
+        end
+
+end

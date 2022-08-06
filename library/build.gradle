@@ -99,8 +99,10 @@ afterEvaluate {
 
                 groupId = 'com.github.syedamariarasheed.chucker'
                 artifactId = 'library'
-                version = '1.0.1'
+                version = generateVersionCode.name
             }
         }
     }
 }
+
+apply from: 'versioning.gradle'

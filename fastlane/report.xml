@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.0002">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: project assembleRelease" time="11.58077">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: Switch to android get_build_version lane" time="0.000771">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: prompt" time="3.018261">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: clean" time="1.305006">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: library:publish" time="0.883446">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: add_git_tag" time="0.026265">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
