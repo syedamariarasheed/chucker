@@ -12,14 +12,9 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+# created by syedamariarasheed
 
 default_platform(:android)
-
-#before_all do
-#  ensure_git_branch
-#  ensure_git_status_clean
-#  git_pull
-#end
 
 platform :android do
 
@@ -74,7 +69,9 @@ platform :android do
 
       desc "Submit a new prod Debug Build to firebase distribution"
 
-        lane :publishchucker do
+        lane :publishchucker do |option|
+
+          module_type=option[:module]
 
           gradle(task: "project assemble",build_type: "Release")
 
@@ -82,18 +79,19 @@ platform :android do
 
           gradle(task: "clean")
 
-          task = gradle(task: "library:publish")
+          task = gradle(task: "#{module_type}:publish")
 
           git_add(path: "*")
+
           git_commit(
-                path: "*", message: "release library version "+versionCode,
+                path: "*", message: "release #{module_type} version "+versionCode,
                 skip_git_hooks: true
           )
 
           push_to_git_remote
 
           add_git_tag(
-            tag: versionCode
+            tag: "#{module_type}-"+versionCode
           )
 
           push_git_tags
